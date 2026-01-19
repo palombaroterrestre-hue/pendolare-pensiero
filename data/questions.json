@@ -1,8 +1,13 @@
-
-{
-  "chapter1": {
-    "question": "Cosa voleva dire Eraclito?",
-    "options": ["Che tutto cambia continuamente", "Che il fiume è sacro", "Che il tempo è immobile"],
-    "correct": 0
+[
+  {
+    "id": 1,
+    "question": "Cosa voleva comunicare Eraclito con la metafora del fiume?",
+    "options": [
+      "Tutto è immobile e il cambiamento è un'illusione.",
+      "Il mondo è fatto solo d'acqua.",
+      "Tutto scorre: l'acqua cambia e anche chi vi entra cambia.",
+      "Il tempo non esiste."
+    ],
+    "correct": 2
   }
-}
+]
