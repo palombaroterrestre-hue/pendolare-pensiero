@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Tuo Premio - Eraclito</title>
+  <link rel="stylesheet" href="../assets/CSS/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  
+  <style>
+    .nft-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(0,0,0,0.4));
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 40px;
+      margin: 20px 0;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    #vincitore-nome {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2em;
+      color: #f1c40f; /* Colore oro */
+      margin: 15px 0;
+      font-style: italic;
+    }
+    .nft-badge {
+      font-size: 0.7em;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Eredità di Eraclito</h1>
+    <p>Hai compreso il divenire. Inserisci il tuo nome per forgiare il tuo collezionabile unico.</p>
+    
+    <input type="text" id="input-nome" placeholder="Tuo Nome o Pseudonimo" 
+           style="width: 80%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.3); color: white; text-align: center; font-family: 'Inter';">
+
+    <div id="nft-to-export" class="nft-card">
+      <div class="nft-badge">Digital Collectible #001</div>
+      <div id="vincitore-nome">Il Viandante</div>
+      <p style="font-size: 0.9em; line-height: 1.4;">
+        «Nello stesso fiume non è possibile scendere due volte»<br>
+        <span style="opacity: 0.5;">Consapevolezza acquisita il <span id="data-oggi"></span></span>
+      </p>
+    </div>
+
+    <button onclick="downloadNFT()" class="btn">Scarica NFT</button>
+    
+    <div style="margin-top: 20px;">
+        <a href="../index.html" class="btn" style="font-size: 0.7em; border: none; opacity: 0.6;">Ricomincia il Viaggio</a>
+    </div>
+  </div>
+
+  <script>
+    // Imposta la data odierna
+    document.getElementById('data-oggi').innerText = new Date().toLocaleDateString('it-IT');
+
+    // Cambia il nome sulla carta in tempo reale
+    const input = document.getElementById('input-nome');
+    input.addEventListener('input', () => {
+      document.getElementById('vincitore-nome').innerText = input.value || "Il Viandante";
+    });
+
+    // Funzione magica per scaricare l'immagine
+    function downloadNFT() {
+      const element = document.getElementById('nft-to-export');
+      html2canvas(element, { backgroundColor: "#1a1a1a" }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'eraclito-nft.png';
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      });
+    }
+  </script>
+</body>
+</html>
