@@ -9,9 +9,10 @@ body {
     justify-content: center;
     align-items: center;
     
-    /* Immagine di sfondo: un finestrino di treno con pioggia */
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                url('https://images.unsplash.com/photo-1515165599661-8979c520844c?q=80&w=2070&auto=format&fit=crop');
+    /* SFONDO: Paesaggio di campagna dal finestrino */
+    /* Ho scurito leggermente l'overlay (0.6) perché le foto diurne sono più chiare */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), 
+                url('https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=2070&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -23,13 +24,14 @@ body {
 .container {
     max-width: 450px;
     text-align: center;
-    padding: 50px 30px;
-    background: rgba(255, 255, 255, 0.03); 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    animation: fadeIn 2.5s ease-out;
+    padding: 60px 40px;
+    /* Effetto vetro smerigliato più marcato per lo sfondo diurno */
+    background: rgba(255, 255, 255, 0.07); 
+    backdrop-filter: blur(18px); 
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2px; /* Angoli quasi netti per un look più moderno */
+    animation: fadeIn 3s ease-out;
 }
 
 h1 {
@@ -39,35 +41,39 @@ h1 {
     font-style: italic;
     margin-bottom: 20px;
     letter-spacing: -1px;
+    line-height: 1.1;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2); /* Leggera ombra per staccare dal fondo chiaro */
 }
 
 p {
-    font-size: 1.1em;
+    font-size: 1.15em;
     font-weight: 300;
-    line-height: 1.6;
-    opacity: 0.8;
-    margin-bottom: 30px;
+    line-height: 1.7;
+    opacity: 0.95;
+    margin-bottom: 35px;
+    color: #ffffff;
 }
 
 .btn {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 14px 35px;
     color: #ffffff;
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    font-size: 0.8em;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    font-size: 0.85em;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    transition: all 0.5s ease;
+    letter-spacing: 4px;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .btn:hover {
     background: #ffffff;
-    color: #000000;
+    color: #2c3e50;
     border-color: #ffffff;
+    transform: scale(1.05); /* Piccolo effetto di ingrandimento al passaggio */
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
+    from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
