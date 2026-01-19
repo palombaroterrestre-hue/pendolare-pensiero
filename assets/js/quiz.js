@@ -1,5 +1,5 @@
 
-fetch('../data/questions.json')
+fetch('/data/questions.json')
   .then(response => response.json())
   .then(data => {
     const quiz = data.chapter1;
@@ -7,6 +7,7 @@ fetch('../data/questions.json')
     container.innerHTML = `<p>${quiz.question}</p>`;
     quiz.options.forEach((opt, index) => {
       const btn = document.createElement('button');
+      btn.className = 'btn';
       btn.textContent = opt;
       btn.onclick = () => {
         if(index === quiz.correct){
