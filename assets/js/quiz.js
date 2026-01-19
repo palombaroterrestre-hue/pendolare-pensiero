@@ -1,29 +1,34 @@
 const optionsContainer = document.getElementById('options');
 const feedback = document.getElementById('feedback');
-const backBtn = document.getElementById('back-btn');
 
-const quizData = {
-    opzioni: [
-        "Tutto è immobile e il cambiamento è un'illusione.",
-        "Il mondo è fatto solo d'acqua e l'uomo ne è parte.",
-        "Tutto scorre: l'acqua cambia e anche chi vi entra cambia.",
-        "Il tempo non esiste e il passato ritorna sempre uguale."
-    ],
-    corretta: 2 // La terza opzione è quella giusta
-};
+// Funzione per caricare i dati dal file JSON
+async function loadQuiz() {
+    try {
+        // Percorso relativo per uscire da /chapters/ e andare in /data/
+        const response = await fetch('../data/questions.json');
+        const data = await response.json();
+        
+        // Prendiamo la prima domanda (chapter 1)
+        const currentQuiz = data[0]; 
+        displayQuiz(currentQuiz);
+    } catch (error) {
+        console.error("Errore nel caricamento del quiz:", error);
+        feedback.innerHTML = "Errore nel caricamento delle domande.";
+    }
+}
 
-function initQuiz() {
-    quizData.opzioni.forEach((testo, index) => {
+function displayQuiz(quiz) {
+    quiz.options.forEach((option, index) => {
         const button = document.createElement('button');
-        button.innerText = testo;
-        button.classList.add('quiz-button'); // Applica lo stile del tuo CSS
+        button.innerText = option;
+        button.classList.add('quiz-button'); // Applica il tuo stile CSS
         
         button.onclick = () => {
-            if(index === quizData.corretta) {
-                feedback.innerHTML = "<p style='color: #4CAF50; margin-top:20px;'>Corretto! Panta Rhei: tutto cambia costantemente.</p>";
-                backBtn.style.display = "inline-block"; // Mostra il tasto per tornare indietro
+            if (index === quiz.correct) {
+                // Reindirizzamento alla pagina premio (da creare in /chapters/ o root)
+                window.location.href = "premio.html"; 
             } else {
-                feedback.innerHTML = "<p style='color: #ffafaf; margin-top:20px;'>Non è esatto. Rifletti sulla natura dell'acqua che scorre...</p>";
+                feedback.innerHTML = "<p style='color: #ffafaf; margin-top:20px;'>Non è esatto. L'acqua scorre, prova a seguirne il flusso...</p>";
             }
         };
         
@@ -31,4 +36,5 @@ function initQuiz() {
     });
 }
 
-initQuiz();
+// Avvia il caricamento
+loadQuiz();
