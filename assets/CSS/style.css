@@ -1,54 +1,75 @@
+/* Import fonts se non già presenti nel tuo HTML */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap');
 
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
-    background: #e9edf1;
-    color: #2f3b44;
     height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* leggera texture nebbia */
-    background: radial-gradient(circle at 50% 20%, #ffffff 0%, #e6eaee 40%, #d5d9dd 100%);
+    
+    /* SFONDO: Immagine 1 con overlay scuro per leggibilità */
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                url('http://googleusercontent.com/image_collection/image_retrieval/8041554489879093991_0');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    color: #ffffff;
 }
 
 .container {
-    max-width: 420px;
+    max-width: 450px;
     text-align: center;
-    padding: 28px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.4);
+    padding: 40px;
+    /* Effetto vetro più sottile e moderno */
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 4px; /* Angoli meno arrotondati per un look più serio */
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.4em;
-    margin-bottom: 10px;
-    color: #3a4a55;
+    font-size: 2.8em;
+    font-weight: 300;
+    letter-spacing: -1px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-style: italic;
 }
 
 p {
-    font-size: 1.15em;
-    opacity: 0.8;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+    color: #e0e0e0;
 }
 
 .btn {
     display: inline-block;
-    margin-top: 20px;
-    padding: 12px 20px;
+    margin-top: 30px;
+    padding: 10px 25px;
 
-    background: #b8c6d0;
-    color: #1b252d;
-    border-radius: 8px;
-    font-weight: 600;
+    /* Bottone Ghost: solo bordo, molto minimale */
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    font-weight: 400;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     text-decoration: none;
-    transition: 0.2s ease;
+    transition: all 0.4s ease;
 }
 
 .btn:hover {
-    background: #a9b8c4;
+    background: rgba(255, 255, 255, 1);
+    color: #1b252d;
+    border-color: #ffffff;
 }
