@@ -77,3 +77,38 @@ p {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* Contenitore per le opzioni del quiz */
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Spazio tra i bottoni */
+    margin-top: 25px;
+}
+
+/* Stilizzazione dei bottoni delle risposte (eredita lo stile di .btn) */
+.quiz-button {
+    background: transparent;
+    padding: 12px 20px;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-align: left; /* Allinea il testo a sinistra per le risposte lunghe */
+}
+
+.quiz-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
+    padding-left: 30px; /* Effetto slittamento al passaggio del mouse */
+}
+
+/* Stile per il feedback (giusto/sbagliato) */
+#feedback {
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 0.9em;
+    min-height: 1.5em;
+}
