@@ -9,7 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     
-    /* Immagine di sfondo evocativa (treno/pioggia) */
+    /* Immagine di sfondo: un finestrino di treno con pioggia */
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
                 url('https://images.unsplash.com/photo-1515165599661-8979c520844c?q=80&w=2070&auto=format&fit=crop');
     background-size: cover;
@@ -34,7 +34,7 @@ body {
 
 h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5em;
+    font-size: 2.8em;
     font-weight: 300;
     font-style: italic;
     margin-bottom: 20px;
