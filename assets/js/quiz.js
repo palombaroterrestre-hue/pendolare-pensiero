@@ -1,57 +1,34 @@
-
-fetch('/data/questions.json')
-  .then(response => response.json())
-  .then(data => {
-    const quiz = data.chapter1;
-    const container = document.getElementById('quiz-container');
-    container.innerHTML = `<p>${quiz.question}</p>`;
-    quiz.options.forEach((opt, index) => {
-      const btn = document.createElement('button');
-      btn.className = 'btn';
-      btn.textContent = opt;
-      btn.onclick = () => {
-        if(index === quiz.correct){
-          alert('Corretto! Hai sbloccato il tuo NFT.');
-        } else {
-          alert('Riprova!');
-        }
-      };
-      container.appendChild(btn);
-    });
-  });
 const optionsContainer = document.getElementById('options');
-const feedbackContainer = document.getElementById('feedback');
+const feedback = document.getElementById('feedback');
+const backBtn = document.getElementById('back-btn');
 
-const domande = {
-    testo: "Cosa voleva comunicare Eraclito con questa metafora?",
+const quizData = {
     opzioni: [
-        "Che la realtà è in continuo mutamento",
-        "Che l'acqua dei fiumi scorre velocemente",
-        "Che il tempo è un'illusione dei sensi",
-        "Che l'uomo non deve mai bagnarsi due volte"
+        "Tutto è immobile e il cambiamento è un'illusione.",
+        "Il mondo è fatto solo d'acqua e l'uomo ne è parte.",
+        "Tutto scorre: l'acqua cambia e anche chi vi entra cambia.",
+        "Il tempo non esiste e il passato ritorna sempre uguale."
     ],
-    corretta: 0
+    corretta: 2 // La terza opzione è quella giusta
 };
 
-function caricaQuiz() {
-    domande.opzioni.forEach((opzione, index) => {
-        const btn = document.createElement('button');
-        btn.innerHTML = opzione;
-        btn.classList.add('quiz-button'); // Applica lo stile CSS creato sopra
+function initQuiz() {
+    quizData.opzioni.forEach((testo, index) => {
+        const button = document.createElement('button');
+        button.innerText = testo;
+        button.classList.add('quiz-button'); // Applica lo stile del tuo CSS
         
-        btn.onclick = () => controllaRisposta(index);
-        optionsContainer.appendChild(btn);
+        button.onclick = () => {
+            if(index === quizData.corretta) {
+                feedback.innerHTML = "<p style='color: #4CAF50; margin-top:20px;'>Corretto! Panta Rhei: tutto cambia costantemente.</p>";
+                backBtn.style.display = "inline-block"; // Mostra il tasto per tornare indietro
+            } else {
+                feedback.innerHTML = "<p style='color: #ffafaf; margin-top:20px;'>Non è esatto. Rifletti sulla natura dell'acqua che scorre...</p>";
+            }
+        };
+        
+        optionsContainer.appendChild(button);
     });
 }
 
-function controllaRisposta(index) {
-    if (index === domande.corretta) {
-        feedbackContainer.innerHTML = "Esatto. «Panta Rhei», tutto scorre.";
-        feedbackContainer.style.color = "#afffaf"; // Colore tenue per il successo
-    } else {
-        feedbackContainer.innerHTML = "Non esattamente. Rifletti sul concetto di cambiamento.";
-        feedbackContainer.style.color = "#ffafaf"; // Colore tenue per l'errore
-    }
-}
-
-caricaQuiz();
+initQuiz();
